@@ -109,6 +109,17 @@ class Bridge(object):
             on = lights[l]["state"]["on"]
             self.put("lights", l, "state", {"on": not on})
 
+    def effect_toggle(self, effect="colorloop", light=None):
+        """Toggle lights on/off"""
+
+        lights = self.lights()
+        for l in lights:
+            if light and l != str(light):
+                continue
+            value = effect if lights[l]["state"]["effect"] == "none" else "none"
+            
+            self.put("lights", l, "state", {"effect": value})
+
     def get_bri(self, light=None):
         """Get brightness"""
 

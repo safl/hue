@@ -16,7 +16,6 @@ def main():
     }
     # Keyboard device
     dev = "/dev/input/by-id/usb-GASIA_USB_KB_V11-event-kbd"
-
     
     b = Bridge(bridge, username)    # Construct Bridge object
     l = KeyListener(dev)            # Contruct keyboard listener
@@ -28,6 +27,8 @@ def main():
     l.register_keyPress(keys["2"], lambda event: b.toggle(2))
     l.register_keyPress(keys["3"], lambda event: b.toggle(3))
     l.register_keyPress(keys["4"], lambda event: b.toggle(4))
+    
+    l.register_keyPress(keys["5"], lambda event: b.effect_toggle())
 
     l.register_keyPress(keys["6"], lambda event: b.set_state(states["Energize"]))
     l.register_keyPress(keys["7"], lambda event: b.set_state(states["Concentrate"]))
