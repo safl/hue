@@ -71,13 +71,6 @@ class KeyListener(object):
 
 if __name__ == "__main__":
 
-    keys = {
-        "7": 74, "8": 78, "9": 96,
-        "4": 73, "5": 77, "6": 81,
-        "1": 72, "2": 76, "3": 80, 
-        "0": 71, "*": 75, "#": 79,
-    }
-
     l = KeyListener("/dev/input/by-id/usb-GASIA_USB_KB_V11-event-kbd")
     l.register_keyUp(71, lambda event: print(event))
     l.listen()
