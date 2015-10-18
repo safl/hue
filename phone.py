@@ -35,7 +35,7 @@ def main():
     l.register_keyPress(keys["0"], lambda event: b.toggle())
   
     for n in xrange(1, 6+1):        # Map 1-6 keypad to toggling lights 1-6
-        l.register_keyPress(keys["%d" % n], lambda event: b.toggle(bulb2hue(n)))
+        l.register_keyPress(keys["%d" % n], lambda event: b.toggle(bulb2hue[n]))
 
     #l.register_keyPress(keys["6"], lambda event: b.set_state(states["Energize"]))
     l.register_keyPress(keys["7"], lambda event: b.set_state(states["Concentrate"]))
