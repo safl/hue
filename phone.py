@@ -7,6 +7,17 @@ def main():
     bridge = "192.168.1.4"
     username = "114c60782a10a3df2f8c82281afdcbef"
 
+    # Mapping a numbering to whatever numerical
+    # id the bridge has given to bulbs/lights.
+    bulb2hue = {
+        1, 10,
+        2, 12
+        3, 11,
+        4, 9,
+        5: 7,
+        6: 8
+    }
+
     # Mapping the numerical keys to keycodes
     keys = {
         "7": 74, "8": 78, "9": 96,
@@ -22,15 +33,11 @@ def main():
 
                                     # Register callbacks
     l.register_keyPress(keys["0"], lambda event: b.toggle())
-    
-    l.register_keyPress(keys["1"], lambda event: b.toggle(1))
-    l.register_keyPress(keys["2"], lambda event: b.toggle(2))
-    l.register_keyPress(keys["3"], lambda event: b.toggle(3))
-    l.register_keyPress(keys["4"], lambda event: b.toggle(4))
-    
-    l.register_keyPress(keys["5"], lambda event: b.effect_toggle())
+  
+    for n in xrange(1, 6+1)         # Map 1-6 keypad to toggling lights 1-6
+        l.register_keyPress(keys["%d" % n], lambda event: b.toggle(bulb2hue(n)))
 
-    l.register_keyPress(keys["6"], lambda event: b.set_state(states["Energize"]))
+    #l.register_keyPress(keys["6"], lambda event: b.set_state(states["Energize"]))
     l.register_keyPress(keys["7"], lambda event: b.set_state(states["Concentrate"]))
     l.register_keyPress(keys["8"], lambda event: b.set_state(states["Reading"]))
     l.register_keyPress(keys["9"], lambda event: b.set_state(states["Relax"]))
