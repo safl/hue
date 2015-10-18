@@ -10,10 +10,10 @@ def main():
     # Mapping a numbering to whatever numerical
     # id the bridge has given to bulbs/lights.
     bulb2hue = {
-        1, 10,
-        2, 12
-        3, 11,
-        4, 9,
+        1: 10,
+        2: 12,
+        3: 11,
+        4: 9,
         5: 7,
         6: 8
     }
