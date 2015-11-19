@@ -1,10 +1,11 @@
 #!/usr/bin/env python
+import logging
 from keylistener import KeyListener
 from hue import Bridge, states
 
 def main():
 
-    bridge = "192.168.1.4"
+    bridge = "192.168.1.3"
     username = "114c60782a10a3df2f8c82281afdcbef"
 
     # Mapping a numbering to whatever numerical
@@ -55,4 +56,8 @@ def main():
     l.listen()                      # Listen for events
 
 if __name__ == "__main__":
-    main()
+    logging.basicConfig(filename='retro.log', level=logging.DEBUG)
+    try:
+        main()
+    except Exception as e:
+        logging.error("Error: %s" % e) 
